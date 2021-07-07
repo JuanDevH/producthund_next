@@ -18,7 +18,7 @@ const InputSubmit = styled.button`
     background-color: #fff;
     position: absolute;
     right: 1rem;
-    top: 1px;
+    top: 1.5px;
     border: none;
     text-indent: -9999px;
 
