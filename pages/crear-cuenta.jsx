@@ -19,9 +19,7 @@ const initialState = {
 const CrearCuenta = () => {
 
     const [ error, setError ] = useState(false);
-
     const { valores, errores, handleSubmit, handleChange, handleBlur } = useValidacion(initialState, validarCrearCuenta, crearCuenta );
-
     const { nombre, email, password } = valores;
 
     async function crearCuenta() {
