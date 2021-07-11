@@ -77,13 +77,13 @@ const NuevoProducto = () => {
     setSubiendo(false);
     setNombreImagen(nombre);
     firebase
-        .storage
-        .ref("productos")
-        .child(nombre)
-        .getDownloadURL()
-        .then(url => {
-          console.log(url)
-          setUrlImagen(url);
+      .storage
+      .ref("productos")
+      .child(nombre)
+      .getDownloadURL()
+      .then(url => {
+        console.log(url)
+        setUrlImagen(url);
       });
   }
 
