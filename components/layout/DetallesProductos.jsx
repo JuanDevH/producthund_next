@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import styled from "@emotion/styled";
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { es } from 'date-fns/locale';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+
 
 const Producto = styled.li`
     padding: 4rem;
@@ -95,7 +97,10 @@ const DetallesProductos = ({producto}) => {
                 </div>
 
                 <div>
-                    <Titulo>{nombre}</Titulo>
+                    {/* eslint-disable-next-line @next/next/link-passhref */}
+                    <Link href="/productos/[id]" as={`/productos/${id}`}>
+                        <Titulo>{nombre}</Titulo>
+                    </Link>
                     <TextoDescripcion>{descripcion}</TextoDescripcion>
 
                     <Comentarios>
