@@ -6,6 +6,7 @@ import { Formulario, Campo, InputSubmit, Error } from '../components/UI/Formular
 import Router, { useRouter } from 'next/router';
 
 import { FirebaseContext } from '../firebase';
+import Error404 from '../components/layout/404';
 
 // Validaciones
 import useValidacion from '../hooks/useValidacion';
@@ -52,7 +53,12 @@ const NuevoProducto = () => {
       descripcion,
       votos: 0,
       comentarios: [],
-      creado: Date.now()
+      creado: Date.now(),
+      creador: {
+        id: usuario.uid,
+        nombre: usuario.displayName
+      },
+      haVotado: []
     }
 
     // Insertarlo en la base de datos
@@ -90,7 +96,8 @@ const NuevoProducto = () => {
   return (
     <div>
       <Layout>
-        <>
+        { !usuario ? <Error404 /> : (
+          <>
           <h1
               css={css`
                   text-align: center;
@@ -110,7 +117,7 @@ const NuevoProducto = () => {
                       type="text" 
                       name="nombre" 
                       id="nombre"
-                      placeholder="Tu Nombre"
+                      placeholder="Nombre del Producto"
                       value={nombre}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -185,6 +192,8 @@ const NuevoProducto = () => {
             />
           </Formulario>
         </>
+        )}
+        
       </Layout>
     </div>
   )
